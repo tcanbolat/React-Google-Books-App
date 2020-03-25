@@ -3,5 +3,10 @@
 }
 
 img {
-    margin-right: 40px !important;
+    margin-right: 15px !important;
+    margin-bottom: 5px !important;
+}
+
+button {
+    margin: 10px !important;
 }
