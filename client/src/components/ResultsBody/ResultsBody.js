@@ -1,11 +1,11 @@
 import React from 'react';
-import {} from 'semantic-ui-react';
+import {Segment, Header} from 'semantic-ui-react';
 import './ResultsBody.css';
 
 export default function ResultsBody() {
     return (
-        <div>
-
-        </div>
+        <Segment>
+            <Header content='Results'style={{minHeight: 400}}/>
+        </Segment>
     );
 };

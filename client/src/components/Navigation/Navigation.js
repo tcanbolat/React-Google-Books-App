@@ -28,7 +28,13 @@ export default function Navigation() {
           </Header>
         </Header>
         <Header as="h2" floated="right">
-          <Button style={styles.navbuttons} size="big" inverted color="red" animated>
+          <Button
+            style={styles.navbuttons}
+            size="big"
+            inverted
+            color="red"
+            animated
+          >
             <Button.Content hidden>Search</Button.Content>
             <Button.Content visible>
               <Icon name="search" />
