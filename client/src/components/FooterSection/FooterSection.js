@@ -7,11 +7,12 @@ import {
   Header,
   Divider,
   Image,
-  Icon
+  Icon,
+  Popup
 } from "semantic-ui-react";
 import SemanticLogo from "../../semantic-logo.jpg";
 import googleLogo from "../../Google-Books-logo.jpg";
-import reactLogo from "../../React-icon.jpg";
+import MERNLogo from "../../MERN.png";
 
 export default function FooterSection() {
   return (
@@ -44,14 +45,14 @@ export default function FooterSection() {
               />
             </Grid.Column>
             <Grid.Column width={3}>
-              <Header as="h4" content="React" />
+              <Header as="h4" content="MERN" />
               <Image
                 centered
-                size="small"
-                href="https://reactjs.org/"
+                size="medium"
+                href="https://blog.hyperiondev.com/index.php/2018/09/10/everything-need-know-mern-stack/"
                 target="_"
-                src={reactLogo}
-                alt="React logo"
+                src={MERNLogo}
+                alt="Mern logo"
               />
             </Grid.Column>
             <Grid.Column width={7}>
@@ -59,8 +60,8 @@ export default function FooterSection() {
               <p>
                 React-based Google Books Search app. This app demonstrates the
                 use of React Components, and lifecycle methods to query and
-                display books based on user searches. Built using Node, React, Express
-                and MongoDB. Deployed via Heroku.
+                display books based on user searches. Built using Node, React,
+                Express and MongoDB. Deployed via Heroku.
               </p>
             </Grid.Column>
           </Grid>
@@ -72,14 +73,19 @@ export default function FooterSection() {
               <Icon name="github" />
               tcanbolat
             </List.Item>
-            <List.Item
-              as="a"
-              href="https://github.com/tcanbolat/React-Google-Books-App"
-              target="_"
-            >
-              <Icon name="code" />
-              Source Code
-            </List.Item>
+            <Popup
+              content="Please make sure to cite the codes original author in your work"
+              trigger={
+                <List.Item
+                  as="a"
+                  href="https://github.com/tcanbolat/React-Google-Books-App"
+                  target="_"
+                >
+                  <Icon name="code" />
+                  Source Code
+                </List.Item>
+              }
+            />
             <List.Item>&copy; 2020</List.Item>
           </List>
         </Container>
