@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Header, Segment, Button, Icon } from "semantic-ui-react";
 import booksImg from "../../books-icon.jpg";
 const styles = {
@@ -28,30 +29,34 @@ export default function Navigation() {
           </Header>
         </Header>
         <Header as="h2" floated="right">
-          <Button
-            style={styles.navbuttons}
-            size="big"
-            inverted
-            color="red"
-            animated
-          >
-            <Button.Content hidden>Search</Button.Content>
-            <Button.Content visible>
-              <Icon name="search" />
-            </Button.Content>
-          </Button>
-          <Button
-            style={styles.navbuttons}
-            size="big"
-            inverted
-            color="blue"
-            animated="vertical"
-          >
-            <Button.Content hidden>My List</Button.Content>
-            <Button.Content visible>
-              <Icon name="list" />
-            </Button.Content>
-          </Button>
+          <Link to="/">
+            <Button
+              style={styles.navbuttons}
+              size="big"
+              inverted
+              color="red"
+              animated
+            >
+              <Button.Content hidden>Search</Button.Content>
+              <Button.Content visible>
+                <Icon name="search" />
+              </Button.Content>
+            </Button>
+          </Link>
+          <Link to="/mylist">
+            <Button
+              style={styles.navbuttons}
+              size="big"
+              inverted
+              color="blue"
+              animated="vertical"
+            >
+              <Button.Content hidden>My List</Button.Content>
+              <Button.Content visible>
+                <Icon name="list" />
+              </Button.Content>
+            </Button>
+          </Link>
         </Header>
       </Segment>
     </Container>

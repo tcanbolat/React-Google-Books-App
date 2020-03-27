@@ -1,20 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navigation from "./components/Navigation/Navigation";
-import MainBody from "./components/MainBody/MainBody";
 import FooterSection from "./components/FooterSection/FooterSection";
+import SearchPage from "./pages/SearchPage";
+import MyList from "./pages/MyList";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Navigation />
-        <MainBody />
-        <FooterSection />
-      </div>
-
-    );
-  }
+export default function App() {
+  return (
+      <Router>
+      <Navigation />
+        <Switch>
+          <Route exact path="/">
+            <SearchPage /> 
+          </Route>
+          <Route exact path="/mylist">
+            <MyList />
+          </Route>
+        </Switch>
+        <FooterSection/>
+      </Router>
+  );
 }
-
-export default App;

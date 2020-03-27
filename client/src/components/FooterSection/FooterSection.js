@@ -74,7 +74,7 @@ export default function FooterSection() {
               tcanbolat
             </List.Item>
             <Popup
-              content="Please make sure to cite the codes original author in your work"
+              content="Please make sure to reference the codes original author in your work"
               trigger={
                 <List.Item
                   as="a"
