@@ -16,7 +16,6 @@ export default class SearchPage extends Component {
       results: [],
       input: ""
     };
-    // this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleInputChange = event => {
