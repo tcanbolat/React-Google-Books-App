@@ -29,11 +29,15 @@ export default class SearchPage extends Component {
   handleSearch = event => {
     event.preventDefault();
     API.BooksApi(this.state.input)
-    .then(response =>
-      // console.log(response.data.items)
-       this.setState({
-        results: response.data.items
+    .then(response => {
+      console.log(response.data.items)
+      var filteredItems = response.data.items.filter(function(book) {
+        return !!book.volumeInfo.imageLinks
       })
+       this.setState({
+        results: filteredItems
+      })
+    }
     )
     console.log(this.state.results);
     this.setState({
