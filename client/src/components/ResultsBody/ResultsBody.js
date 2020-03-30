@@ -1,14 +1,21 @@
 import React from "react";
+import axios from 'axios';
 import { Segment, Header, Item, Label } from "semantic-ui-react";
 import "./ResultsBody.css";
 
 export default class ResultsBody extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
   addToReadingList(Book) {
     console.log("addtoreadinglist executed");
-    console.log(Book);
+    let bookObject = {}
+    bookObject.bookid = Book.id;
+    bookObject.image = Book.volumeInfo.imageLinks.thumbnail;
+    bookObject.title = Book.volumeInfo.title;
+    bookObject.authors = Book.volumeInfo.authors;
+    bookObject.description = Book.volumeInfo.description;
+    bookObject.previewLink = Book.volumeInfo.previewLink;
+    console.log(bookObject);
+    axios.post("/api/savebook", bookObject);
   } 
 
   render() {
@@ -31,7 +38,7 @@ export default class ResultsBody extends React.Component {
                   <Label href={bookresults.volumeInfo.previewLink} target="_">
                     Preview Book
                   </Label>
-                  <Label
+                  <Label as="a"
                     onClick={()=> {this.addToReadingList(bookresults)}}
                     icon="save"
                     content="Add to reading list"
