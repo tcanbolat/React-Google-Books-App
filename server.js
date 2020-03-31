@@ -20,7 +20,7 @@ app.get("*", function(req, res) {
 });
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://"+ process.env.MONGO_USER +":"+ process.env.MONGO_PASS + "@ds121189.mlab.com:21189/heroku_n0n5lwq6",  ,
+  process.env.MONGODB_URI || "mongodb://"+ process.env.MONGO_USER +":"+ process.env.MONGO_PASS + "@ds121189.mlab.com:21189/heroku_n0n5lwq6",
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 
