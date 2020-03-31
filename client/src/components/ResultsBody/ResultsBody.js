@@ -7,7 +7,7 @@ export default class ResultsBody extends React.Component {
 
   addToReadingList(Book) {
     console.log("addtoreadinglist executed");
-    let bookObject = {}
+    let bookObject = {};
     bookObject.bookid = Book.id;
     bookObject.image = Book.volumeInfo.imageLinks.thumbnail;
     bookObject.title = Book.volumeInfo.title;
