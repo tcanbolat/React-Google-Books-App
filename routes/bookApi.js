@@ -22,4 +22,14 @@ router.get("/api/mylist", (req, res) => {
   });
 });
 
+router.delete("/api/mylist/:id", function(req, res) {
+  const bookId = req.params.id;
+  db.Book.findOneAndDelete({ _id: bookId }).then(dbBook => {
+    res.json(dbBook);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
+
 module.exports = router;

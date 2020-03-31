@@ -23,6 +23,13 @@ export default class MyList extends React.Component {
       console.log(this.state.dbresults);
     });
   }
+
+  deleteBook(id) {
+    console.log("deletebook executed");
+    console.log(id);
+    axios.delete("/api/mylist/" + id).then(this.componentDidMount());
+  }
+
   render() {
     return (
       <Container>
@@ -33,21 +40,18 @@ export default class MyList extends React.Component {
               <Item key={bookresults.bookid}>
                 <Item.Image src={bookresults.image} />
                 <Item.Content>
-                  <Item.Header as="a">
-                    {bookresults.title}
-                  </Item.Header>
+                  <Item.Header as="a">{bookresults.title}</Item.Header>
                   <Item.Meta>
                     <span>{bookresults.authors}</span>
                   </Item.Meta>
-                  <Item.Description>
-                    {bookresults.description}
-                  </Item.Description>
+                  <Item.Description>{bookresults.description}</Item.Description>
                   <Item.Extra>
                     <Label href={bookresults.previewLink} target="_">
                       Preview Book
                     </Label>
                     <Label
                       as="a"
+                      onClick={() => this.deleteBook(bookresults._id)}
                       icon="delete"
                       content="Delete Book"
                     />
