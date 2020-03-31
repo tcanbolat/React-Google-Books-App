@@ -4,7 +4,7 @@ const db = require("../models/index");
 router.post("/api/savebook", (req, res) => {
   savedBook = req.body;
   console.log(savedBook);
-  db.Book.create({"book": savedBook})
+  db.Book.create(savedBook)
     .then(dbBook => {
       res.json(dbBook);
     })
@@ -16,6 +16,9 @@ router.post("/api/savebook", (req, res) => {
 router.get("/api/mylist", (req, res) => {
   db.Book.find({}).then(dbBook => {
     res.json(dbBook);
+  })
+  .catch(err => {
+    res.json(err);
   });
 });
 

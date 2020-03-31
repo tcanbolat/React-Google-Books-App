@@ -12,15 +12,15 @@ export default class MyList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: []
+      dbresults: []
     };
   }
   componentDidMount() {
     axios.get("/api/mylist").then(response => {
       this.setState({
-        results: response.data
+        dbresults: response.data
       });
-      console.log(this.state.results);
+      console.log(this.state.dbresults);
     });
   }
   render() {
@@ -29,7 +29,7 @@ export default class MyList extends React.Component {
         <Segment style={styles.segment}>
           <Header content="My List" />
           <Item.Group divided>
-            {this.state.results.map(bookresults => (
+            {this.state.dbresults.map(bookresults => (
               <Item key={bookresults.bookid}>
                 <Item.Image src={bookresults.image} />
                 <Item.Content>
