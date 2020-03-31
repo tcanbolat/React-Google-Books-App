@@ -13,4 +13,10 @@ router.post("/api/savebook", (req, res) => {
     });
 });
 
+router.get("/api/mylist", (req, res) => {
+  db.Book.find().then(dbBook => {
+    res.json(dbBook);
+  });
+});
+
 module.exports = router;
