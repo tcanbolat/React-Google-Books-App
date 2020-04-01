@@ -31,7 +31,6 @@ npm install
 npm start
 
 // Server runs on http://localhost:3001 and client on http://localhost:3000
-// cite source code if you choose to use this as your skeleton
 ```
 
 
