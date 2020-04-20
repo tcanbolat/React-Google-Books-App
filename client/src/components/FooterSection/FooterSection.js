@@ -74,7 +74,7 @@ export default function FooterSection() {
               tcanbolat
             </List.Item>
             <Popup
-              content="Make sure to reference source code in your work"
+              content="source code"
               trigger={
                 <List.Item
                   as="a"
