@@ -14,17 +14,17 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(require("./routes/bookApi"));
 
-// mongoose.connect(
-//   process.env.MONGODB_URI || "mongodb://"+ process.env.MONGO_USER +":"+ process.env.MONGO_PASS + "@ds121189.mlab.com:21189/heroku_n0n5lwq6",
-//   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-// );
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://"+ process.env.MONGO_USER +":"+ process.env.MONGO_PASS + "@ds121189.mlab.com:21189/heroku_n0n5lwq6",
+  { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+);
 
-mongoose.connect("mongodb://localhost/reactreadinglist", {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true
-});
-mongoose.set('useCreateIndex', true);
+// mongoose.connect("mongodb://localhost/reactreadinglist", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+//   useUnifiedTopology: true
+// });
+// mongoose.set('useCreateIndex', true);
 
 // Send every request to the React app
 // Define any API routes before this runs
