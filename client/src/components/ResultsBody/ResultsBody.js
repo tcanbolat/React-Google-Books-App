@@ -3,30 +3,40 @@ import axios from 'axios';
 import { Segment, Header, Item, Label } from "semantic-ui-react";
 import "./ResultsBody.css";
 
-export default class ResultsBody extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      color: "",
-      content: "Add to reading list",
-    }
-    // this.handleError = this.handleError.bind(this);
+export default function ResultsBody ({results, updateResults}) {
+
+
+  const handleError = (id) => { 
+    const bookIndex = results.findIndex(b => {
+      return b.id === id;
+    });
+        const book = {
+      ...results[bookIndex]
+    };
+    book.color = 'red';
+    book.content = "Book is already saved!";
+    const newresults = [...results];
+    newresults[bookIndex] = book;
+   updateResults(newresults);
+  };
+
+  const handleSuccess = (id) => {
+    const bookIndex = results.findIndex(b => {
+      return b.id === id;
+    });
+        const book = {
+      ...results[bookIndex]
+    };
+    book.color = 'green';
+    book.content = "Added book to your reading list!";
+    const newresults = [...results];
+    newresults[bookIndex] = book;
+   updateResults(newresults);
   }
-
-
-  // handleError(event) {
-  //   console.log(event)
-  //   this.setState({ color: "red", content: "already saved, go to your list"})
-  // }
-
-  // handleSuccess() {
-  //   this.setState({ color: "green", content: "Saved book to you list!"})
-  // }
  
   
-  addToReadingList(Book) {
+  const addToReadingList = (Book) => {
     console.log("addtoreadinglist executed");
-    // console.log()
     let bookObject = {};
     bookObject.bookid = Book.id;
     bookObject.image = Book.volumeInfo.imageLinks.thumbnail;
@@ -34,26 +44,24 @@ export default class ResultsBody extends React.Component {
     bookObject.authors = Book.volumeInfo.authors;
     bookObject.description = Book.volumeInfo.description;
     bookObject.previewLink = Book.volumeInfo.previewLink;
-    // console.log(bookObject);
+    console.log(bookObject);
     axios.post("/api/savebook", bookObject).then((res)=>  {
       console.log(res);
       if(res.data === "book already saved") {
-        alert("book already saved!")
-        // this.handleError();
+        const data = JSON.parse(res.config.data)
+         handleError(data.bookid);
       } else {
-        alert("saved book!");
-        // this.handleSuccess();
-      }
+        const data = JSON.parse(res.config.data)
+        handleSuccess(data.bookid);
+      } 
     } )
-  } 
+  }
 
-  render() {
-    const { color, content } = this.state
     return (
       <Segment style={{ minHeight: 400 }}>
         <Header content="Results" />
         <Item.Group divided>
-          {this.props.results.map(bookresults => (
+          {results.map(bookresults => (
             <Item key={bookresults.id}>
               <Item.Image src={bookresults.volumeInfo.imageLinks.thumbnail} />
               <Item.Content>
@@ -69,10 +77,10 @@ export default class ResultsBody extends React.Component {
                     Preview Book
                   </Label>
                   <Label as="a" 
-                    onClick={()=> {this.addToReadingList(bookresults)} }
+                    onClick={()=> {addToReadingList(bookresults)} }
                     icon="save"
-                    content={content}
-                    color={color}
+                    content={bookresults.content}
+                    color={bookresults.color}
                   />
                 </Item.Extra>
               </Item.Content>
@@ -81,5 +89,4 @@ export default class ResultsBody extends React.Component {
         </Item.Group>
       </Segment>
     );
-  }
 }

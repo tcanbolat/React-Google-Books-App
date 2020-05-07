@@ -4,7 +4,7 @@ const db = require("../models/index");
 router.post("/api/savebook", (req, res) => {
   savedBook = req.body;
   savedBookId = req.body.bookid;
-  // console.log(savedBook);
+  console.log(savedBook);
   // console.log(savedBookId);
   db.Book.find({ bookid: savedBookId }).then(books => {
     // console.log(books);
